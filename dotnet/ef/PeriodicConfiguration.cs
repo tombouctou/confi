@@ -27,6 +27,8 @@ public class PeriodicConfiguration<TReader> where TReader : IConfigurationReader
                 {
                     if (_reader == null)
                     {
+                        _logger?.LogWarning("Reader is not resolved yet. Skipping configuration reading");
+
                         return;
                     }
 
