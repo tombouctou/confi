@@ -1,0 +1,19 @@
+name: confi-manager
+
+services:
+  host:
+    image: confi-manager
+    labels:
+      - family=nist
+    profiles: [ apps, all ]
+    build:
+      context: .
+      dockerfile: host/Dockerfile
+    environment:
+      - CONNECTION_STRINGS_MONGO=mongodb://db:27017/
+    ports:
+      - "40398:8080"
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
