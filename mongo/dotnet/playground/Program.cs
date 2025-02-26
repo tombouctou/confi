@@ -8,10 +8,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.AddSimpleConsole(c => c.SingleLine = true);
 
-builder.AddMongoConfiguration(cfg => cfg
-    .AddLoader("simple", MongoLoadingMode.LongPolling)
-    .AddLoader("toggles")
-);
+// v1:
+
+// builder.AddMongoConfiguration(documentId: "simple");
+
+// v2:
+
+// builder.AddMongoConfiguration(documentId: "simple", mode: MongoReadingMode.LongPolling);
+
+// v3:
+
+// builder.AddMongoConfiguration(cfg => cfg
+//     .AddLoader("simple", MongoLoadingMode.LongPolling)
+//     .AddLoader("toggles")
+// );
 
 builder.Services.AddMongo(
     "mongodb://localhost:27017/?replicaSet=rs0", 
@@ -20,7 +30,7 @@ builder.Services.AddMongo(
 
 var app = builder.Build();
 
-app.MapPut("simple/config", async (IMongoCollection<ConfigRecord> collection, IConfiguration configuration, JsonElement body) => {
+app.MapPut("simple/config", async (IMongoCollection<ConfigurationRecord> collection, IConfiguration configuration, JsonElement body) => {
     var result = await collection.Put(new (
         "simple",
         BsonDocument.Parse(body.ToString()
@@ -37,7 +47,7 @@ app.MapPut("simple/config", async (IMongoCollection<ConfigRecord> collection, IC
     };
 });
 
-app.MapPut("toggles/config", async (IMongoCollection<ConfigRecord> collection, IConfiguration configuration, JsonElement body) => {
+app.MapPut("toggles/config", async (IMongoCollection<ConfigurationRecord> collection, IConfiguration configuration, JsonElement body) => {
     var result = await collection.Put(new(
         "toggles",
         BsonDocument.Parse(body.ToString()
