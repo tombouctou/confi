@@ -19,7 +19,7 @@ public class FluentEnvironmentVariablesConfiguration
             yield return String.Join("", beforeColon) + ":" + String.Join("", afterColon);
         }
 
-        yield return String.Join("", parts);
+        if (parts.Length > 1) yield return String.Join("", parts);
     }
     
     public class Source(string prefix) : IConfigurationSource

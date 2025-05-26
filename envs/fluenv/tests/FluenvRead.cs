@@ -10,6 +10,16 @@ public class FluenvRead
         new ConfigurationBuilder()
             .AddFluentEnvironmentVariables("FLUENV_TEST_")
             .Build();
+
+    [TestMethod]
+    public void Unsplit()
+    {
+        Environment.SetEnvironmentVariable("FLUENV_TEST_UNSPLIT", "unsplit");
+
+        Console.WriteLine(Configuration["Unsplit"]);
+
+        Configuration["Unsplit"].ShouldBe("unsplit");
+    }
     
     [TestMethod]
     public void WebhookAddresses()
