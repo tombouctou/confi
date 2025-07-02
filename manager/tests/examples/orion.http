@@ -1,0 +1,113 @@
+PUT /apps/orion/nodes/{{ $guid }}
+
+{
+    "version" : "{{ $datetime 'YYYY.1MM.1DD' }}",
+    "schema" : {
+        "type": "object",
+        "properties" : {
+            "color" : {
+                "type": "string",
+                "description": "The color of the orion today"
+            },
+            "brightness" : {
+                "type": "number",
+                "description": "The brightness of the orion today"
+            }
+        },
+        "required": [
+            "color",
+            "brightness"
+        ]
+    },
+    "configuration" : {
+        "color": "red",
+        "brightness": 0.8
+    }
+}
+
+###
+PUT /apps/zenith/nodes/{{ $guid }}
+
+{
+    "version" : "{{ $datetime 'YYYY.1MM.1DD' }}",
+    "schema" : {
+        "type": "object",
+        "properties" : {
+            "analyticsEnabled" : {
+                "type": "boolean",
+                "description": "Enable analytics for zenith"
+            },
+            "refreshRate" : {
+                "type": "number",
+                "description": "Refresh rate in seconds"
+            }
+        },
+        "required": [
+            "analyticsEnabled",
+            "refreshRate"
+        ]
+    },
+    "configuration" : {
+        "analyticsEnabled": false,
+        "refreshRate": 60
+    }
+}
+
+###
+PUT /apps/atlas/nodes/{{ $guid }}
+
+{
+    "version" : "{{ $datetime 'YYYY.1MM.1DD' }}",
+    "schema" : {
+        "type": "object",
+        "properties" : {
+            "gatewayUrl" : {
+                "type": "string",
+                "description": "URL of the Atlas gateway"
+            },
+            "secure" : {
+                "type": "boolean",
+                "description": "Use secure connection"
+            }
+        },
+        "required": [
+            "gatewayUrl",
+            "secure"
+        ]
+    },
+    "configuration" : {
+        "gatewayUrl": "https://atlas.example.com",
+        "secure": true
+    }
+}
+
+###
+PUT /apps/nova/nodes/{{ $guid }}
+
+{
+    "version" : "{{ $datetime 'YYYY.1MM.1DD' }}",
+    "schema" : {
+        "type": "object",
+        "properties" : {
+            "syncInterval" : {
+                "type": "number",
+                "description": "Sync interval in seconds"
+            }
+        },
+        "required": [
+            "syncInterval"
+        ]
+    },
+    "configuration" : {
+        "syncInterval": 30
+    }
+}
+
+###
+GET /apps/orion
+###
+GET /apps/zenith
+###
+GET /apps/atlas
+###
+GET /apps/nova

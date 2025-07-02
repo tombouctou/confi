@@ -1,7 +1,7 @@
 prep:
 	docker compose up -d
 
-run:
+run-api:
 	dotnet run --project host
 
 down:
