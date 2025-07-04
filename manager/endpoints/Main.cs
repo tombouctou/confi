@@ -20,7 +20,8 @@ public static class MainHelper
         return builder
             .AddCollection<NodeRecord>("nodes")
             .AddCollection<SchemeRecord>("schemas")
-            .AddCollection<ConfigurationRecord>("configs");
+            .AddCollection<ConfigurationRecord>("configs")
+            .AddCollection<AppRecord>("apps");
     }
 
     public static Error? ToConfiManagerError(this Exception exception)

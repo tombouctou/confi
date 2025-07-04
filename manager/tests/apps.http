@@ -1,0 +1,38 @@
+### 1. Create an app by posting a node
+PUT /apps/aurora/nodes/main
+
+{
+    "schema": {
+        "type": "object",
+        "properties": {
+            "title": {
+                "type": "string"
+            },
+            "content": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "title",
+            "content"
+        ]
+    },
+    "configuration": {
+        "title": "Welcome",
+        "content": "This is your first note."
+    },
+    "version": "1.0"
+}
+
+### 2. Get the list of apps
+GET /apps
+
+### 3. Patch the app name
+PATCH /apps/aurora
+
+{
+    "name": "Aurora Notes"
+}
+
+### 4. Get the list of apps again
+GET /apps

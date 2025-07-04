@@ -5,3 +5,4 @@ obj/
 .env
 inbox.md
 *.DotSettings
+buffer.*

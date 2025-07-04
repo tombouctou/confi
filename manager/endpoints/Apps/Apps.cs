@@ -11,6 +11,8 @@ public static class AppEndpoints
         endpoints.MapGet(Uris.App("{appId}"), GetApp);
         endpoints.MapPut(Uris.App("{appId}"), PutApp);
 
+        endpoints.MapAppListEndpoints();
+
         // backward-compatibility
         endpoints.MapGet("{appId}", GetApp);
         endpoints.MapPut("{appId}", PutApp);

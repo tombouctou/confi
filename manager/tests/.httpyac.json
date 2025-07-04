@@ -1,4 +1,7 @@
 {
+    "defaultHeaders": {
+        "Content-Type": "application/json"
+    },
     "environments": {
         "local" : {
             "host" : "http://localhost:40398"

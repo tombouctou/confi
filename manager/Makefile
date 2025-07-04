@@ -1,3 +1,5 @@
+TEST ?= about
+
 prep:
 	docker compose up -d
 
@@ -17,3 +19,13 @@ assemble:
 
 build:
 	docker compose --profile all build
+
+yac:
+	httpyac send tests/$(TEST).http --all --env local
+
+replay:
+	make reset
+	make play
+
+play:
+	bash -c -i 'make run-api & sleep 5 && make yac && fg'
