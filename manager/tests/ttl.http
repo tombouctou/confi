@@ -1,0 +1,28 @@
+PUT /apps/mars/nodes/{{ $guid }}
+
+{
+    "version" : "{{ $datetime 'YYYY.1MM.1DD' }}",
+    "schema" : {
+        "type": "object",
+        "properties" : {
+            "color" : {
+                "type": "string",
+                "description": "The color of the orion today"
+            }
+        },
+        "required": [
+            "color"
+        ]
+    },
+    "configuration" : {
+        "color": "red"
+    }
+}
+
+###
+# @name app
+GET /apps/mars
+
+###
+# @ref app
+GET /apps/mars/nodes/{{ Object.keys(app.nodes)[0] }}

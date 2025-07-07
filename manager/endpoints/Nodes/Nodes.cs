@@ -1,10 +1,11 @@
 using System.Collections;
+using Confi.Manager;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Nist;
 using Persic;
 
-namespace Confi.Manager;
+namespace Confi;
 
 public static class NodeHelper
 {
@@ -42,13 +43,10 @@ public static class NodeHelper
         IMongoCollection<SchemeRecord> schemasCollection,
         IMongoCollection<ConfigurationRecord> configurationCollection)
     {
-        var record = new NodeRecord(
-            nodeId, 
-            appId, 
-            candidate.Version,
-            UpdatedAt: DateTime.UtcNow,
-            candidate.Schema.ToBsonDocument(),  
-            candidate.Configuration.ToBsonDocument()
+        var record = NodeRecord.From(
+            appId: appId, 
+            nodeId: nodeId, 
+            candidate: candidate
         );
 
         await nodeCollection.Put(record);
@@ -95,27 +93,6 @@ public static class VersionComparer
         return await mongoCollection
             .Find(x => x.AppId == appId)
             .ToListAsync();
-    }
-}
-
-public record NodeRecord(
-    string Id,
-    string AppId,
-    string Version,
-    DateTime UpdatedAt,
-    BsonDocument Schema,
-    BsonDocument Configuration
-) : IMongoRecord<string>
-{
-    public Node ToProtocol()
-    {
-        return new Node(
-            Id, 
-            AppId, 
-            Version,
-            Schema.ToJsonElement(), 
-            Configuration.ToJsonElement()
-        );
     }
 }
 

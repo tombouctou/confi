@@ -8,13 +8,15 @@ public record Node(
     string AppId,
     string Version,
     JsonElement Schema,
-    JsonElement Configuration
+    JsonElement Configuration,
+    DateTime ExpiresAt
 );
 
 public record NodeCandidate(
     JsonElement Schema, 
     JsonElement Configuration,
-    string Version
+    string Version,
+    TimeSpan? TimeToLive = null
 );
 
 public record NodeState(string Status);

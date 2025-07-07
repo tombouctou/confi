@@ -15,10 +15,10 @@ public static class MainHelper
         return endpoints;
     }
 
-    public static MongoDependencyInjection.CollectionBuilder AddConfiManagerCollections(this MongoDependencyInjection.CollectionBuilder builder)
+    public static MongoRegistrationBuilder AddConfiManagerCollections(this MongoRegistrationBuilder builder)
     {
         return builder
-            .AddCollection<NodeRecord>("nodes")
+            .AddNodeCollection()
             .AddCollection<SchemeRecord>("schemas")
             .AddCollection<ConfigurationRecord>("configs")
             .AddCollection<AppRecord>("apps");

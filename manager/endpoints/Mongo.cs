@@ -7,12 +7,6 @@ namespace Confi;
 
 public static class Mongo
 {
-    public static async Task<JsonDocument> ToJsonDocument(this Task<BsonDocument> bsonTask)
-    {
-        var bson = await bsonTask;
-        return JsonDocument.Parse(bson.ToJson());
-    }
-
     public static JsonElement ToJsonElement(this BsonDocument bson) =>
         JsonDocument.Parse(bson.ToJson()).RootElement;
 

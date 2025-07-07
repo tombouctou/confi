@@ -46,6 +46,8 @@ _ = string.IsNullOrWhiteSpace(prefix)
     ? app.MapConfiManager()
     : app.MapGroup(prefix).MapConfiManager();
 
+await app.Services.ApplyMongoConfiguration();
+
 app.Run();
 
 public partial class Program;

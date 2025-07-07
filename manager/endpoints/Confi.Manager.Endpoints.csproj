@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Confi.Manager.Protocol" Version="2025.106.103.9" />
-    <PackageReference Include="Persic.Mongo" Version="2025.101.127.2" />
+    <PackageReference Include="Persic.Mongo" Version="2025.107.107.12" />
   </ItemGroup>
 
 </Project>
