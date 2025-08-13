@@ -22,7 +22,7 @@ public class Options
     public void ResolveCollectionWatchFromIConfiguration()
     {
         var configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(new[] { new KeyValuePair<string, string?>("Mode", "CollectionWatch") })
+            .AddInMemoryCollection(new[] { new KeyValuePair<string, string?>("Mode", "CollectionWatching") })
             .Build();
 
         var resolvedMode = configuration.GetValue<MongoReadingMode>("Mode");

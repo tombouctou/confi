@@ -4,6 +4,7 @@ namespace Confi.Manager.Tests;
 public class ClientTests
 {
     [TestMethod]
+    [TestCategory("LocalOnly")]
     public async Task GetAboutPrefixed()
     {
         var http = new HttpClient()

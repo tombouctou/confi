@@ -6,3 +6,4 @@ obj/
 inbox.md
 *.DotSettings
 buffer.*
+*.DotSettings.user
