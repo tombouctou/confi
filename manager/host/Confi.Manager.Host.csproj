@@ -13,6 +13,7 @@
     <PackageReference Include="Nist.Errors" Version="2025.102.109.27" />
     <PackageReference Include="Nist.Logs" Version="2024.106.109.28" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
 
